@@ -1,0 +1,13 @@
+# DTData server config file
+
+# crawler service addr
+dtdataservaddr: 127.0.0.1:1234
+
+# ankadb config
+ankadb:
+  # dbpath
+  dbpath: './dat'
+  # engine
+  engine: 'leveldb'
+  # httpaddr
+  httpaddr: ''

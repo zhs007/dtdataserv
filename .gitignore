@@ -13,3 +13,5 @@
 
 cfg/*.yaml
 dtdataserv
+.vscode
+dat

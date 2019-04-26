@@ -11,9 +11,9 @@ func startServ() {
 	fmt.Printf("dtdata server start...\n")
 	fmt.Printf("dtdata server version is %v \n", VERSION)
 
-	cfg, err := jarviscore.LoadConfig("cfg/config.yaml")
+	cfg, err := jarviscore.LoadConfig("cfg/jarvisnode.yaml")
 	if err != nil {
-		fmt.Printf("load config.yaml fail!\n")
+		fmt.Printf("load jarvisnode.yaml fail!\n")
 
 		return
 	}

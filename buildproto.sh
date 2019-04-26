@@ -1,0 +1,1 @@
+protoc -I jarviscrawlercore/ jarviscrawlercore/result.proto --go_out=plugins=grpc:jarviscrawlercore
