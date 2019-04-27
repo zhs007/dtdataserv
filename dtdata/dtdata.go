@@ -14,9 +14,10 @@ import (
 
 // DTData - DTData
 type DTData struct {
-	cfg    *Config
-	client *dtdataClient
-	db     *dtDataDB
+	cfg      *Config
+	client   *dtdataClient
+	db       *dtDataDB
+	httpserv *HTTPServer
 }
 
 // NewDTData - new dtdata
@@ -30,15 +31,23 @@ func NewDTData(filename string) (*DTData, error) {
 
 	db, err := newDTDataDB(cfg.AnkaDB.DBPath, cfg.AnkaDB.HTTPAddr, cfg.AnkaDB.Engine)
 	if err != nil {
-		jarvisbase.Error("NewDTData", zap.Error(err))
+		jarvisbase.Error("NewDTData:newDTDataDB", zap.Error(err))
+
+		return nil, err
+	}
+
+	httpserv, err := newHTTPServer(cfg.HTTPAddr, db)
+	if err != nil {
+		jarvisbase.Error("NewDTData:newHTTPServer", zap.Error(err))
 
 		return nil, err
 	}
 
 	dtdata := &DTData{
-		cfg:    cfg,
-		db:     db,
-		client: newDTDataClient(cfg.DTDataServAddr),
+		cfg:      cfg,
+		db:       db,
+		client:   newDTDataClient(cfg.DTDataServAddr),
+		httpserv: httpserv,
 	}
 
 	return dtdata, nil
@@ -160,4 +169,11 @@ func (dtdata *DTData) Run(ctx context.Context, jarvisnode jarviscore.JarvisNode,
 	return []*jarviscorepb.JarvisMsg{
 		jarviscore.NewErrorMsg(jarvisnode, srcAddr, ErrInvliadDTDataType.Error(), msgid),
 	}
+}
+
+// Start - start a service
+func (dtdata *DTData) Start(ctx context.Context, jarvisnode jarviscore.JarvisNode) {
+	jarvisnode.RegCtrl(DTDataCtrlType, dtdata)
+
+	dtdata.httpserv.start(ctx)
 }

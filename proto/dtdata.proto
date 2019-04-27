@@ -64,6 +64,8 @@ message DTReport {
     string mainCurrency = 7;
     int32 businessNums = 8;
 
+    string err = 30;
+
     repeated DTGameReport topGames = 100;
     repeated DTBusinessReport topBusiness = 101;
 }

@@ -205,3 +205,10 @@ func makeBusinessDayDataKey(env string, daytime string) string {
 func makeCacheKey(hashstr string) string {
 	return jarviscore.AppendString("cache:", hashstr)
 }
+
+// newErrorDTReport - new DTReport with error
+func newErrorDTReport(err error) *dtdatapb.DTReport {
+	return &dtdatapb.DTReport{
+		Err: err.Error(),
+	}
+}

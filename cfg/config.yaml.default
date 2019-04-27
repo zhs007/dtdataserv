@@ -3,6 +3,9 @@
 # crawler service addr
 dtdataservaddr: 127.0.0.1:1234
 
+# http server address
+httpaddr: 127.0.0.1:7053
+
 # ankadb config
 ankadb:
   # dbpath

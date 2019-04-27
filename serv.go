@@ -22,7 +22,7 @@ func startServ() {
 	jarviscore.InitJarvisCore(cfg)
 	defer jarviscore.ReleaseJarvisCore()
 
-	_, err = dtdata.NewDTData("./cfg/config.yaml")
+	dtd, err := dtdata.NewDTData("./cfg/config.yaml")
 	if err != nil {
 		fmt.Printf("NewDTData %v", err)
 
@@ -41,6 +41,7 @@ func startServ() {
 
 	node.SetNodeTypeInfo(DTDATASERVTYPE, VERSION)
 
+	go dtd.Start(context.Background(), node)
 	node.Start(context.Background())
 
 	fmt.Printf("dtdata server end.\n")

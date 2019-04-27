@@ -16,6 +16,8 @@ type Config struct {
 		Engine   string
 		HTTPAddr string
 	}
+
+	HTTPAddr string
 }
 
 // LoadConfig - load config
@@ -54,6 +56,10 @@ func checkConfig(cfg *Config) error {
 
 	if cfg.AnkaDB.DBPath == "" || cfg.AnkaDB.Engine == "" {
 		return ErrNoAnkaDBConfig
+	}
+
+	if cfg.HTTPAddr == "" {
+		return ErrNoHTTPServerAddr
 	}
 
 	return nil

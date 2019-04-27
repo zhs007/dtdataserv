@@ -11,4 +11,6 @@ var (
 	ErrInvliadDTDataType = errors.New("invalid dtdata type")
 	// ErrGameDayReport - GameDayReport error
 	ErrGameDayReport = errors.New("GameDayReport error")
+	// ErrNoHTTPServerAddr - no http server address
+	ErrNoHTTPServerAddr = errors.New("no http server address")
 )
