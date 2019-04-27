@@ -9,4 +9,6 @@ var (
 	ErrNoAnkaDBConfig = errors.New("no ankadb config")
 	// ErrInvliadDTDataType - invalid dtdata type
 	ErrInvliadDTDataType = errors.New("invalid dtdata type")
+	// ErrGameDayReport - GameDayReport error
+	ErrGameDayReport = errors.New("GameDayReport error")
 )

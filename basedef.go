@@ -4,4 +4,4 @@ package main
 const DTDATASERVTYPE = "dtdataserv"
 
 // VERSION - version
-const VERSION = "0.1.6"
+const VERSION = "0.1.7"

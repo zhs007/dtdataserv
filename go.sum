@@ -52,9 +52,8 @@ github.com/syndtr/goleveldb v1.0.0/go.mod h1:ZVVdQEZoIme9iO1Ch2Jdy24qqXrMMOU6lpP
 github.com/zhs007/ankadb v0.0.0-20190301081530-22b9fe97cdd7/go.mod h1:mwc+UxjuHl8eN5YH/7J++m17c3gQfIWi30p/FN06IHk=
 github.com/zhs007/ankadb v0.3.28 h1:Wtl8rDIw6LoPuak2F8MSAU1gb1XUCb6macsXThOPVOU=
 github.com/zhs007/ankadb v0.3.28/go.mod h1:mtpiYhkJko7z4njgNUY8inCnsN0wZ9ZcVrZG3jd3pzU=
-github.com/zhs007/jarviscore v0.7.132 h1:aF5UKarrRLxZZRuDkDqdBVuZ6RNJAmtAV4rr4kz/vsY=
-github.com/zhs007/jarviscore v0.7.132/go.mod h1:zx/+4UkT6hf2/zfNFEIf+xwwzSmHujuW74Yxhr7eed8=
-github.com/zhs007/jarvistelebot v0.1.99 h1:eVoOSJGbiW4jQxCiRWO2xTSwfCL0dk9ywtId7gopP/w=
+github.com/zhs007/jarviscore v0.7.136 h1:tLHdvqDbpGKNbfc76naBMzWLFY6QV/+vRIkDTSYXfcM=
+github.com/zhs007/jarviscore v0.7.136/go.mod h1:zx/+4UkT6hf2/zfNFEIf+xwwzSmHujuW74Yxhr7eed8=
 go.uber.org/atomic v1.3.2 h1:2Oa65PReHzfn29GpvgsYwloV9AVFHPDk8tYxt2c2tr4=
 go.uber.org/atomic v1.3.2/go.mod h1:gD2HeocX3+yG+ygLZcrzQJaqmWj9AIm7n08wl/qW/PE=
 go.uber.org/multierr v1.1.0 h1:HoEmRHQPVSqub6w2z2d2EOVs2fjyFRGyofhKuyDq0QI=

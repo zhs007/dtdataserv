@@ -11,6 +11,14 @@ message DTDataServCtrlInfo {
     DTDataType type = 1;
     string startTime = 2;
     string endTime = 3;
+    string env = 4;
+    string currency = 5;
+    int32 scaleMoney = 6;
+}
+
+// DTDataServCtrlReply - DTData server ctrl reply
+message DTDataServCtrlReply {
+    string token = 1;
 }
 
 // DTGameReport - dt game report

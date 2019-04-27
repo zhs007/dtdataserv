@@ -1,10 +1,13 @@
 package dtdata
 
 import (
+	"crypto/md5"
+	"fmt"
 	"sort"
 
 	"github.com/zhs007/dtdataserv/jarviscrawlercore"
 	"github.com/zhs007/dtdataserv/proto"
+	"github.com/zhs007/jarviscore"
 )
 
 func findBusinessInDTGameReport(game *dtdatapb.DTGameReport, businessid string) *dtdatapb.DTBusinessReport {
@@ -47,8 +50,7 @@ func findDTBusinessReport(lstBusiness []*dtdatapb.DTBusinessReport, businessid s
 	return nil
 }
 
-func countDTReportWithBusinessGameReport(reply *jarviscrawlercore.ReplyDTData, mainCurrency string,
-	topNumsGame int, topNumsBusiness int) *dtdatapb.DTReport {
+func countDTReportWithBusinessGameReport(reply *jarviscrawlercore.ReplyDTData, mainCurrency string, scale int) *dtdatapb.DTReport {
 
 	dtreport := &dtdatapb.DTReport{
 		MainCurrency: mainCurrency,
@@ -158,5 +160,48 @@ func countDTReportWithBusinessGameReport(reply *jarviscrawlercore.ReplyDTData, m
 		dtreport.TopBusiness = append(dtreport.TopBusiness, lstBusiness[i])
 	}
 
+	if scale > 0 && dtreport.TotalBet > 0 {
+		maxbet := dtreport.TotalBet
+
+		dtreport.TotalBet = float32(scale)
+		dtreport.TotalWin = float32(scale) * dtreport.TotalWin / maxbet
+
+		for _, v := range dtreport.TopGames {
+			v.TotalBet = float32(scale) * v.TotalBet / maxbet
+			v.TotalWin = float32(scale) * v.TotalWin / maxbet
+
+			for _, vb := range v.BusinessReport {
+				vb.TotalBet = float32(scale) * vb.TotalBet / maxbet
+				vb.TotalWin = float32(scale) * vb.TotalWin / maxbet
+			}
+		}
+
+		for _, v := range dtreport.TopBusiness {
+			v.TotalBet = float32(scale) * v.TotalBet / maxbet
+			v.TotalWin = float32(scale) * v.TotalWin / maxbet
+
+			for _, vg := range v.GameReport {
+				vg.TotalBet = float32(scale) * vg.TotalBet / maxbet
+				vg.TotalWin = float32(scale) * vg.TotalWin / maxbet
+			}
+		}
+	}
+
 	return dtreport
+}
+
+// buildHashBuffer - build hash buffer
+func buildHashBuffer(buf []byte) string {
+	h := md5.New()
+	return fmt.Sprintf("%x", h.Sum(buf))
+}
+
+// makeBusinessDayDataKey - make business day data key
+func makeBusinessDayDataKey(env string, daytime string) string {
+	return jarviscore.AppendString(env, ":bdd:", daytime)
+}
+
+// makeCacheKey - make cache key
+func makeCacheKey(hashstr string) string {
+	return jarviscore.AppendString("cache:", hashstr)
 }
