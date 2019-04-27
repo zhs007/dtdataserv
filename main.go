@@ -1,30 +1,31 @@
 package main
 
 import (
-	"context"
-	"fmt"
+	// "context"
+	// "fmt"
 	_ "net/http/pprof"
-
-	"github.com/zhs007/dtdataserv/dtdata"
+	// "github.com/zhs007/dtdataserv/dtdata"
 )
 
 func main() {
 
-	dtdata, err := dtdata.NewDTData("./cfg/config.yaml")
-	if err != nil {
-		fmt.Printf("NewDTData %v", err)
+	// dtdata, err := dtdata.NewDTData("./cfg/config.yaml")
+	// if err != nil {
+	// 	fmt.Printf("NewDTData %v", err)
 
-		return
-	}
+	// 	return
+	// }
 
-	data, err := dtdata.GetBusinessDayData(context.Background(), "dtserv2", "2019-04-25")
-	if err != nil {
-		fmt.Printf("GetBusinessDayData %v", err)
+	startCmd()
 
-		return
-	}
+	// data, err := dtdata.GetBusinessDayData(context.Background(), "dtserv2", "2019-04-25")
+	// if err != nil {
+	// 	fmt.Printf("GetBusinessDayData %v", err)
 
-	fmt.Printf("%-v", data)
+	// 	return
+	// }
+
+	// fmt.Printf("%-v", data)
 
 	// startServ()
 }

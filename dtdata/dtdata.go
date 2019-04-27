@@ -3,7 +3,11 @@ package dtdata
 import (
 	"context"
 
+	"github.com/golang/protobuf/ptypes"
 	"github.com/zhs007/dtdataserv/jarviscrawlercore"
+	"github.com/zhs007/dtdataserv/proto"
+	"github.com/zhs007/jarviscore"
+	"github.com/zhs007/jarviscore/proto"
 )
 
 // DTData - DTData
@@ -56,4 +60,24 @@ func (dtdata *DTData) GetBusinessDayData(ctx context.Context, env string, daytim
 	}
 
 	return data, nil
+}
+
+// Run - jarviscore.Ctrl
+func (dtdata *DTData) Run(jarvisnode jarviscore.JarvisNode, srcAddr string, msgid int64, ci *jarviscorepb.CtrlInfo) []*jarviscorepb.JarvisMsg {
+
+	var dtdataci dtdatapb.DTDataServCtrlInfo
+	err := ptypes.UnmarshalAny(ci.Dat, &dtdataci)
+	if err != nil {
+		return []*jarviscorepb.JarvisMsg{
+			jarviscore.NewErrorMsg(jarvisnode, jarvisnode.GetMyInfo().Addr, srcAddr, err.Error(), msgid),
+		}
+	}
+
+	if dtdataci.Type == dtdatapb.DTDataType_DTDT_GAMEDAYREPORT {
+
+	}
+
+	return []*jarviscorepb.JarvisMsg{
+		jarviscore.NewErrorMsg(jarvisnode, jarvisnode.GetMyInfo().Addr, srcAddr, ErrInvliadDTDataType.Error(), msgid),
+	}
 }

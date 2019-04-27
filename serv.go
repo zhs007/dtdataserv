@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/zhs007/dtdataserv/dtdata"
 	"github.com/zhs007/jarviscore"
 )
 
@@ -20,6 +21,13 @@ func startServ() {
 
 	jarviscore.InitJarvisCore(cfg)
 	defer jarviscore.ReleaseJarvisCore()
+
+	_, err = dtdata.NewDTData("./cfg/config.yaml")
+	if err != nil {
+		fmt.Printf("NewDTData %v", err)
+
+		return
+	}
 
 	// pprof
 	jarviscore.InitPprof(cfg)
