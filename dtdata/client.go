@@ -3,9 +3,6 @@ package dtdata
 import (
 	"context"
 
-	// "github.com/zhs007/jarviscore/base"
-	// "go.uber.org/zap"
-
 	"github.com/zhs007/dtdataserv/jarviscrawlercore"
 	"google.golang.org/grpc"
 )

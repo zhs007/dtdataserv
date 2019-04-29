@@ -1,7 +1,7 @@
-package main
+package dtdatabasedef
 
 // DTDATASERVTYPE - dtdataserv
 const DTDATASERVTYPE = "dtdataserv"
 
 // VERSION - version
-const VERSION = "0.1.11"
+const VERSION = "0.1.12"

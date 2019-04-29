@@ -4,13 +4,14 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/zhs007/dtdataserv/basedef"
 	"github.com/zhs007/dtdataserv/dtdata"
 	"github.com/zhs007/jarviscore"
 )
 
 func startServ() {
 	fmt.Printf("dtdata server start...\n")
-	fmt.Printf("dtdata server version is %v \n", VERSION)
+	fmt.Printf("dtdata server version is %v \n", dtdatabasedef.VERSION)
 
 	cfg, err := jarviscore.LoadConfig("cfg/jarvisnode.yaml")
 	if err != nil {
@@ -39,7 +40,7 @@ func startServ() {
 		return
 	}
 
-	node.SetNodeTypeInfo(DTDATASERVTYPE, VERSION)
+	node.SetNodeTypeInfo(dtdatabasedef.DTDATASERVTYPE, dtdatabasedef.VERSION)
 
 	go dtd.Start(context.Background(), node)
 	node.Start(context.Background())

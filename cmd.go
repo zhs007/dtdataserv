@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
+	"github.com/zhs007/dtdataserv/basedef"
 	corebasedef "github.com/zhs007/jarviscore/basedef"
 )
 
@@ -136,7 +137,7 @@ func addVersion(rootCmd *cobra.Command) {
 		Use:   "version",
 		Short: "get dtdata server version",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Printf("dtdata server version is %v \n", VERSION)
+			fmt.Printf("dtdata server version is %v \n", dtdatabasedef.VERSION)
 			fmt.Printf("jarvis core version is %v \n", corebasedef.VERSION)
 		},
 	}
