@@ -34,3 +34,16 @@ func BuildCtrlInfoForGameDayReport(env string, daytime string, currency string,
 
 	return ci, nil
 }
+
+// GetReplyFromCtrlResult - get DTDataServCtrlReply from CtrlResult
+func GetReplyFromCtrlResult(cr *jarviscorepb.CtrlResult) (*dtdatapb.DTDataServCtrlReply, error) {
+
+	reply := &dtdatapb.DTDataServCtrlReply{}
+
+	err := ptypes.UnmarshalAny(cr.Dat, reply)
+	if err != nil {
+		return nil, err
+	}
+
+	return reply, nil
+}
