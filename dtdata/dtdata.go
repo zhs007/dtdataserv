@@ -125,12 +125,20 @@ func (dtdata *DTData) Run(ctx context.Context, jarvisnode jarviscore.JarvisNode,
 	}
 
 	if dtdataci.Type == dtdatapb.DTDataType_DTDT_GAMEDAYREPORT {
-		bdddat, err := dtdata.db.getBusinessDayData(ctx, dtdataci.Env, dtdataci.StartTime)
+		bdddat, err := dtdata.GetBusinessDayData(ctx, dtdataci.Env, dtdataci.StartTime)
 		if err != nil {
-			jarvisbase.Warn("DTData.Run:getBusinessDayData", zap.Error(err))
+			jarvisbase.Warn("DTData.Run:GetBusinessDayData", zap.Error(err))
 
 			return []*jarviscorepb.JarvisMsg{
 				jarviscore.NewErrorMsg(jarvisnode, srcAddr, err.Error(), msgid),
+			}
+		}
+
+		if bdddat == nil {
+			jarvisbase.Warn("DTData.Run:GetBusinessDayData", zap.Error(ErrNoBusinessDayData))
+
+			return []*jarviscorepb.JarvisMsg{
+				jarviscore.NewErrorMsg(jarvisnode, srcAddr, ErrNoBusinessDayData.Error(), msgid),
 			}
 		}
 

@@ -13,4 +13,6 @@ var (
 	ErrGameDayReport = errors.New("GameDayReport error")
 	// ErrNoHTTPServerAddr - no http server address
 	ErrNoHTTPServerAddr = errors.New("no http server address")
+	// ErrNoBusinessDayData - no BusinessDayData
+	ErrNoBusinessDayData = errors.New("no BusinessDayData")
 )
