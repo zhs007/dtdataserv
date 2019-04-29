@@ -17,7 +17,6 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o dtdataserv . \
     && mkdir /app/dtdataserv/dat \
     && mkdir /app/dtdataserv/logs \
     && mkdir /app/dtdataserv/cfg \
-    && cp -r www /app/dtdataserv/www \
     && cp ./dtdataserv /app/dtdataserv/ \
     && cp cfg/config.yaml.default /app/dtdataserv/cfg/config.yaml
 
