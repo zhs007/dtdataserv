@@ -40,7 +40,7 @@ func startServ() {
 		return
 	}
 
-	node.SetNodeTypeInfo(dtdatabasedef.DTDATASERVTYPE, dtdatabasedef.VERSION)
+	node.SetNodeTypeInfo(dtdatabasedef.JARVISNODETYPE, dtdatabasedef.VERSION)
 
 	go dtd.Start(context.Background(), node)
 	node.Start(context.Background())

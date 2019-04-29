@@ -1,7 +1,7 @@
 package dtdatabasedef
 
-// DTDATASERVTYPE - dtdataserv
-const DTDATASERVTYPE = "dtdataserv"
+// JARVISNODETYPE - dtdataserv
+const JARVISNODETYPE = "dtdataserv"
 
 // VERSION - version
-const VERSION = "0.1.15"
+const VERSION = "0.1.16"
