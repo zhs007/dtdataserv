@@ -12,6 +12,7 @@ RUN go mod download
 COPY . /src/dtdataserv
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o dtdataserv . \
+    && mkdir /app \
     && mkdir /app/dtdataserv \
     && mkdir /app/dtdataserv/dat \
     && mkdir /app/dtdataserv/logs \
