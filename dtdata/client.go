@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"github.com/zhs007/dtdataserv/jarviscrawlercore"
+	"github.com/zhs007/jarviscore/base"
+	"go.uber.org/zap"
 	"google.golang.org/grpc"
 )
 
@@ -29,7 +31,7 @@ func (tc *dtdataClient) getDTData(ctx context.Context, mode string, startTime st
 	if tc.conn == nil || tc.client == nil {
 		conn, err := grpc.Dial(tc.servAddr, grpc.WithInsecure())
 		if err != nil {
-			// jarvisbase.Warn("dtdataClient.getDTData:grpc.Dial", zap.Error(err))
+			jarvisbase.Warn("dtdataClient.getDTData:grpc.Dial", zap.Error(err))
 
 			return nil, err
 		}
@@ -45,7 +47,7 @@ func (tc *dtdataClient) getDTData(ctx context.Context, mode string, startTime st
 		EndTime:   endTime,
 	})
 	if err != nil {
-		// jarvisbase.Warn("dtdataClient.getDTData:GetDTData", zap.Error(err))
+		jarvisbase.Warn("dtdataClient.getDTData:GetDTData", zap.Error(err))
 
 		// if error, close connect
 		tc.conn.Close()
