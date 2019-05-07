@@ -4,4 +4,4 @@ package dtdatabasedef
 const JARVISNODETYPE = "dtdataserv"
 
 // VERSION - version
-const VERSION = "0.1.18"
+const VERSION = "0.1.19"
