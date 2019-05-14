@@ -1,0 +1,13 @@
+FROM golang:1.12
+
+MAINTAINER zerro "zerrozhao@gmail.com"
+
+WORKDIR /src/dtdataserv
+
+COPY ./go.* /src/dtdataserv/
+
+RUN go mod download
+
+COPY . /src/dtdataserv
+
+RUN go test ./... -cover
