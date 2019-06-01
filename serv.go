@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/zhs007/dtdataserv/basedef"
+	dtdatabasedef "github.com/zhs007/dtdataserv/basedef"
 	"github.com/zhs007/dtdataserv/dtdata"
 	"github.com/zhs007/jarviscore"
 )
@@ -20,7 +20,7 @@ func startServ() {
 		return
 	}
 
-	jarviscore.InitJarvisCore(cfg)
+	jarviscore.InitJarvisCore(cfg, dtdatabasedef.JARVISNODETYPE, dtdatabasedef.VERSION)
 	defer jarviscore.ReleaseJarvisCore()
 
 	dtd, err := dtdata.NewDTData("./cfg/config.yaml")
